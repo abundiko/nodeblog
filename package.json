@@ -1,0 +1,32 @@
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "practicing node(my first node project)",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon index.js",
+    "startEnv": "SESSION_SECRET=thisismyappsecret"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abundiko.github.io/node.git"
+  },
+  "author": "Abundance",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abundiko.github.io/node/issues"
+  },
+  "homepage": "https://github.com/abundiko.github.io/node#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}

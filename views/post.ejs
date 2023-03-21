@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node Blog | Posts: <%= locals.data.title %></title>
+  <link rel="stylesheet" href="../assets/css/diko.css">
+</head>
+<style>
+
+</style>
+<body>
+  <%- include('./partials/nav') %>
+  <section class="one py-4">
+    <div class="container">
+      <div class="row djcc">
+        <div class="col-12 col-md-8">
+          <img src="../assets/uploads/<%= locals.data.photo %>" alt="<%= locals.data.title %>" class="w-100 mb-2 ">
+          <h2><b><%= locals.data.title %></b></h2>
+          <% locals.data.body.forEach(item => { %>
+          <p>
+            <%= item %>
+          </p>
+          <% }) %>
+        </div>
+        <aside class="col-md-4 p-2 d-none d-md-block dt0">
+          <div class="p-2 bg-1 rounded border border-secondary w-100 mb-3 bg3">
+              <div class="dflex w-100">
+                <div style="min-height:40px; min-width:40px;" class="rounded-circle shadow bg4 t1 dflex djcc dalc dfdc">
+                  <h3 class="m-0 text-capitalize">
+                    <%=locals.data.poster.initial%>
+                  </h3>
+                </div>
+                <div class="ms-2">
+                  <p class="m-0">
+                    <%=locals.data.poster.name%>
+                  </p>
+                  <p class="dfont-s m-0 text-success">
+                    <%=locals.data.date%>
+                  </p>
+                </div>
+              </div>
+          </div>
+          <div class="p-2 bg-1 rounded border border-secondary w-100">
+            <div class="dflex w-100 flex-wrap">
+              <h6><b>Comments</b></h6>
+              <form action="/posts/<%= locals.data.uid %>" class="w-100" method="post">
+                <div class="my-3 dflex">
+                  <textarea value="" required  name="comment" id="comment" rows="1"
+                    placeholder="Enter comment Here" class=" dborn bg3 py-2 px-3 rounded w-100"></textarea>
+                    <button type="submit" class="btn btn-sm btn-primary ms-1">&gt;</button>
+                </div>
+              </form>
+              <% if (data.comments) { %>
+               
+                <div>
+                  <% for( let i = 0; i < locals.data.comments.length; i++ ) { %>
+                    
+                    <div class="shadow rounded p-2 bg05 t4 mb-3 dwfit">
+                      <div class="dflex djcsb">
+                        <b class="dfont-s"><%= locals.data.comments[i].name %></b>
+                        <% if (locals.data.comments[i].uid == locals.session.userId) { %>
+                         
+                          <a href="/posts/<%= locals.data.uid %>/delete/<%= locals.data.comments[i].index  %>" class="text-danger">Del</a>
+                        <% } %>
+                      </div>
+                      <p class="dopa8 m-0"><%= locals.data.comments[i].comment %></p>
+                      <span class="t1"><%= locals.data.comments[i].date %></span>
+                    </div>
+                <% } %>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</body>
+<script>
+  const sideBar = document.querySelector('aside');
+  window.onscroll = e =>{
+    const sideBarTop = sideBar.getBoundingClientRect().top;
+    if(top == 0){
+      sideBar.classList.add('dposf')
+    }else sideBar.classList.remove('dposf');
+  }
+</script>
+
+</html>

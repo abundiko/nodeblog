@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node Blog | Posts</title>
+  <link rel="stylesheet" href="assets/css/diko.css">
+</head>
+<body>
+<%- include('./partials/nav') %>
+  <section class="one py-4 container">
+    <div class="row djcc">
+      <% if (data != []) {
+          for (let i = 0; i < locals.data.length; i++) {
+            %>
+            <div class="col-12 col-md-4 col-lg-3 p-3 dflex dfdc h-100 djcsb">
+              <img src="assets/uploads/<%=locals.data[i].photo%>" height="130" alt="" class="w-100 shadow dbor10">
+              <a href="/posts/<%=locals.data[i].uid%>" class="t4 dtdn">
+                <h5 class="my-1 "><b><%=locals.data[i].title%></b></h5>
+              </a>
+              <div class="dflex w-100">
+                <div style="min-height:40px; min-width:40px;" class="rounded-circle shadow bg4 t1 dflex djcc dalc dfdc">
+                  <h3 class="m-0 text-capitalize"><%=locals.data[i].poster.initial%></h3>
+                </div>
+                <div class="ms-2">
+                  <p class="m-0"><%=locals.data[i].poster.name%></p>
+                  <p class="dfont-s m-0 text-success"><%=locals.data[i].date%></p>
+                </div>
+              </div>
+            </div>
+            <%
+          }
+        }else{ %>
+        <h5>No Posts Yet</h5>
+        <% } %>
+      
+    </div>
+  </section>
+</body>
+</html>

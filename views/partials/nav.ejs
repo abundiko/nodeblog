@@ -1,0 +1,16 @@
+<header class="bg0 p-3 t3">
+  <div class="container">
+    <div class="dflex djcsb">
+      <h4 class="m-0">NodeBlog</h4>
+      <nav class="dflex">
+        <a href="/" class="d-inline-block dtdn t3 mx-2">Home</a>
+        <a href="/posts" class="d-inline-block dtdn t3 mx-2">Posts</a>
+        <% if (locals.session) { %>
+          <a href="/dashboard" class="d-inline-block dtdn t3 mx-2">Dashboard</a>
+          <% }else{ %>
+            <a href="/login" class="d-inline-block dtdn t3 mx-2">Login</a>
+            <% } %>
+      </nav>
+    </div>
+  </div>
+</header>

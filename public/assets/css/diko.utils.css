@@ -1,0 +1,180 @@
+/* header styling */
+header.dheader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 10vw;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  color: var(--c3);
+}
+
+header.dheader.scrolled {
+  -webkit-box-shadow: 0 0 25px #00000077;
+  box-shadow: 0 0 25px #00000077;
+  top: 0;
+  color: var(--c4);
+}
+
+header.dheader a {
+  text-decoration: none;
+}
+
+header.dheader .nav-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.dheader nav .app-nav-link:hover{
+  color: var(--hover-color);
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .dheader .nav-container {
+    height: 100vh;
+    width: Min(300px, 90vw);
+    min-width: Min(250px, 80vw);
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    background-color: var(--c3);
+  }
+
+  .dheader .nav-container.open {
+    -webkit-box-shadow: 0 0 15px #00000099, 0 0 100px 1000px #000000dd;
+    box-shadow: 0 0 15px #00000099, 0 0 100px 1000px #000000dd;
+    left: 0;
+  }
+
+  .dheader .nav-container .nav-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .dheader .nav-container .nav-links .app-nav-link {
+    color: var(--c4) !important;
+
+  }
+}
+    /*
+    Header example
+    
+    <header class="dheader bgf t4"><a href="index.php"><img src="img/logo.png" width="100"></a><div class="nav-container " id="nav-container"><div class="dflex w-100 djcsb p-4 d-md-none"><img src="img/logo.png" width="100"><i id=" nav-x" class=" fas fa-close d-block p-2 dbor15 " onclick="
+   DOM.remState('nav-container', 'open');
+    DOM.remState('body', 'doverh');
+    "></i>
+   </div><div class="my-4 d-md-none"></div><nav class="nav-links px-3 px-md-0 "><a href="index.php" class="display-block app-nav-link mx-1 mb-2 mb-md-0 ">HOME</a><a href="about.php" class="display-block app-nav-link mx-1 mb-2 mb-md-0">ABOUT US</a><a href="services.php" class="display-block app-nav-link mx-1 mb-2 mb-md-0">PRODUCTS</a><a href="contact.php" class="display-block app-nav-link mx-1 mb-2 mb-md-0">CONTACT</a><a href="blog.php" class="display-block app-nav-link mx-1 mb-2 mb-md-0">FAQ</a></nav></div><i id="nav-x" class="d-md-none fas fa-bars d-block p-2 dbor15 t1" onclick="
+   DOM.addState('nav-container', 'open');
+    DOM.addState('body', 'doverh');
+    "></i>
+   </header>
+   
+   */
+/* header end */
+/* Product Slider Start */
+.dslider-container {
+  position: relative;
+}
+
+.dslider {
+  width: 100%;
+  display: inline-flex;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.dslider-item {
+  padding: 0 10px;
+  color: #000;
+  min-height: 300px;
+}
+
+.dslider::-webkit-scrollbar {
+  display: none;
+}
+
+.dslider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: block;
+  border: none;
+  z-index: 1;
+}
+
+.dslider-btn#dslider-next {
+  right: 20px;
+}
+
+.dslider-btn#dslider-prev {
+  left: 20px;
+}
+
+.child {
+  background-color: #111;
+  width: 100%;
+  height: 100%;
+}
+/* Product Slider End */
+/* Rating Bar Start */
+.drating-bar i{
+  cursor: pointer;
+  color: #00000044;
+}
+.drating-bar i.rated{
+  color: #dd9b00;
+}
+
+
+/* Accordion START */   
+.daccordion-title{
+  cursor: pointer;
+  /* border: 1px solid #00000022; */
+}
+.daccordion-item.active{
+  border: 1px solid var(--c1);
+}
+.daccordion-item.active .daccordion-title>i{
+  transform: rotate(180deg);
+}
+.daccordion-item:not(.active) .daccordion-body{
+  height: 0px !important;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.daccordion-item.active .daccordion-body {
+  height: fit-content;
+  visibility: visible;
+}
+
+/* Progress bar start */
+
+.dprogress-bar{
+  
+  height: var(--progress-bar-height);
+}
+.dprogress-bar-main{
+  height: 100%;
+  width: var(--value);
+}

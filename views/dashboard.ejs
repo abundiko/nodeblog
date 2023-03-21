@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= locals.userData.username %>, Node Blog </title>
+  <link rel="stylesheet" href="assets/css/diko.css">
+</head>
+
+<body>
+  <%- include('./partials/nav') %>
+  
+  <section class="one py-4">
+    <div class="container">
+      <div class="dflex my-2 djcsb">
+        <h6 class="dmxw300"><b>Welcome <span>
+              <%= locals.userData.username %>
+            </span></b></h6>
+        <form action="/logout" method="post">
+          <button type="submit" href="/logout" class="btn btn-sm btn-danger">Logout</b>
+        </form>
+      </div>
+      <div class="row djcsa pt-3 pt-md-5">
+        <div class="col-11 col-md-7 rounded p-3 dflex dfdc shadow-lg mb-3 mb-md-0">
+          <h4>New Post</h4>
+          <form action="/dashboard/newPost" method="post" class="w-100 " id="newPost" enctype="multipart/form-data">
+            <div class="my-3">
+              <% if (locals.postError) { %>
+                <div class=" py-2 px-3 rounded w-100 alert-danger">
+                  <%= locals.postError %>
+                </div>
+                <% }else if (locals.postSuccess){ %>
+                  <div class=" py-2 px-3 rounded w-100 alert-success">
+                    <%= locals.postSuccess %>
+                  </div>
+                  <% } %>
+            </div>
+            <div class="my-3">
+              <input value="<%= locals.postTitle %>" required type="text" name="title" id="title"
+                placeholder="Enter Post Title" class="border border-secondary bg3 py-2 px-3 rounded w-100">
+            </div>
+            <div class="my-3">
+              <input required type="file" name="file" id="file" placeholder="select Post file"
+                class="border border-secondary bg3 py-2 px-3 rounded w-100">
+            </div>
+            <div class="my-3">
+              <textarea value="<%= locals.postBody %>" required name="body" id="body" placeholder="Enter Post Body" rows="6"
+                class="border border-secondary bg3 py-2 px-3 rounded w-100"><%= locals.postBody %></textarea>
+            </div>
+            <div class="my-3">
+              <input type="hidden" name="action" value="newPost" hidden>
+              <input type="submit" name="submit" id="submit" value="Create Post"
+                class="border border-secondary bg-dark text-light py-2 px-3 rounded w-100">
+            </div>
+          </form>
+        </div>
+        <div class="col-11 col-md-4 rounded p-3 dflex dfdc shadow-lg ">
+          <h4>Change Password</h4>
+          <form action="/dashboard/changePassword" method="post" class="w-100" id="changePassword">
+            <div class="my-3">
+              <% if (locals.changeError) { %>
+                <div class=" py-2 px-3 rounded w-100 alert-danger">
+                  <%= locals.changeError %>
+                </div>
+                <% }else if (locals.changeSuccess){ %>
+                  <div class=" py-2 px-3 rounded w-100 alert-success">
+                    <%= locals.changeSuccess %>
+                  </div>
+                  <% } %>
+            </div>
+            <div class="my-3">
+              <input value="<%= locals.changePassword %>" required type="password" name="password" id="password"
+                placeholder="Enter Current password Here" class="border border-secondary bg3 py-2 px-3 rounded w-100">
+            </div>
+            <div class="my-3">
+              <input value="<%= locals.changeNewPassword %>" required type="password" name="newPassword" id="newPassword"
+                placeholder="Enter New password Here" class="border border-secondary bg3 py-2 px-3 rounded w-100">
+            </div>
+            <div class="my-3">
+              <input value="<%= locals.changeNewCPassword %>" required type="password" name="newCPassword" id="newCPassword"
+                placeholder="Confirm New password" class="border border-secondary bg3 py-2 px-3 rounded w-100">
+            </div>
+            <div class="my-3">
+              <input type="hidden" name="action" value="changePassword" hidden>
+              <input type="submit" name="submit" id="submit" value="Update"
+                class="border border-secondary bg-dark text-light py-2 px-3 rounded w-100">
+            </div>
+          </form>
+        </div>
+        <div class="col-12 p-3 p-md-4" id="myPosts">
+
+          <div class="col-11 col-md-12  rounded p-3 dflex dfdc shadow-lg mb-3 mb-md-0">
+            <h4>My Posts</h4>
+            <div class="my-3">
+              <% if (locals.deleteError) { %>
+                <div class=" py-2 px-3 rounded w-100 alert-danger">
+                  <%= locals.deleteError %>
+                </div>
+                <% }else if (locals.deleteSuccess){ %>
+                  <div class=" py-2 px-3 rounded w-100 alert-success">
+                    <%= locals.deleteSuccess %>
+                  </div>
+                  <% } %>
+            </div>
+            <div class="row">
+              <% if (data && locals.data !=[]) { for (let i=0; i < locals.data.length; i++) { %>
+                <div class="col-12 col-md-4 col-lg-3 p-3 dflex dfdc h-100 djcsb">
+                  <img src="assets/uploads/<%=locals.data[i].photo%>" height="130" alt="" class="w-100 shadow dbor10">
+                  <a href="/posts/<%=locals.data[i].uid%>" class="t4 dtdn">
+                    <h5 class="my-1 "><b>
+                        <%=locals.data[i].title%>
+                      </b></h5>
+                  </a>
+                  <a href="/dashboard/delete/<%= locals.data[i].uid %>" class="text-danger">Del</a>
+                </div>
+                <% } }else{ %>
+                  <h5>No Posts Yet</h5>
+                  <% } %>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

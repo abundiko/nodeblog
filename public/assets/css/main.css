@@ -1,0 +1,90 @@
+.header.scrolled{
+  background-color: #fff;
+  box-shadow: 0 0 20px #00000077;
+}
+ .dheader .app-nav-link {
+   color: var(--c4);
+
+ }
+
+.hero{
+  height: 80vh;
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+}
+
+.hero .hero-svg{
+  width: 100%;
+  height: 120px;
+}
+
+.app-title span{
+  font-size: 2em;
+  opacity: .05;
+  text-shadow: 0 0 2px #000;
+}
+.app-title {
+  font-weight: 900;
+  
+}
+.app-title b{
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
+.time-card:hover{
+  transform: scale(1.05);
+  color: #000;
+  background-color: #fff;
+}
+.time-card a{
+  color: inherit;
+}
+.about-card i{
+  transform: scale(3);
+}
+.blur-img{
+  filter: blur(10px);
+}
+.hero-img1 {
+  left: -20px;
+  bottom: -20px;
+  box-shadow: 0 0 30px #000000bb;
+}
+.hero-img2 {
+  top: -20px;
+  right: -20px;
+  box-shadow: 0 0 30px #000000bb;
+}
+.gallery-card{
+  height: clamp(180px, 50vw, 280px);
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.gallery-card:hover{
+  transform: scale(1.05);
+}
+.pop{
+  visibility: hidden;
+}
+.pop.open{
+  visibility: visible;
+}
+.pop-bg{
+  backdrop-filter: blur(10px);
+  filter: blur(10px);
+  cursor: not-allowed;
+}
+.pop-img{
+  box-shadow: 0 0 30px #000000bb;
+  height: 70vh;
+  max-width: 90vw;
+  margin-top: 100px;
+}
+.pop.open .pop-img{
+  margin-top: 0;
+}
+@media screen and (max-width: 768px) {
+  .hero-img{
+    opacity: 0.4;
+  }
+}
