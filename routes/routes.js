@@ -253,7 +253,7 @@ router.post('/dashboard/newPost', hasSession, (req, res) => {
     if (err) {
       console.log(err);
       messages = {
-        postError: "sorry, upload photo error",
+        postError: "sorry, upload photo error "+err,
         postTitle: formData.title,
         postBody: formData.body,
       }
