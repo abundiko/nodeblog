@@ -249,11 +249,11 @@ router.post('/dashboard/newPost', hasSession, (req, res) => {
     return;
   }
   const randomFileName = uuid.v4() + "." + fileExt;
-  req.files.file.mv('public/assets/uploads/' + randomFileName, (err) => {
+  req.files.file.mv('../public/assets/uploads/' + randomFileName, (err) => {
     if (err) {
       console.log(err);
       messages = {
-        postError: "sorry, upload photo error "+err,
+        postError: "sorry, upload photo error "+__dirname+err,
         postTitle: formData.title,
         postBody: formData.body,
       }
