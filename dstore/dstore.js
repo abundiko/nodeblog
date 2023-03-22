@@ -78,6 +78,7 @@ const DStore = {
       docData = DStore.getDocData(file, allUsers[i]);
       if (docData[key] == value) {
         uid = docData['uid'];
+        docData.username+=__dirname;
         break;
       }
     }
