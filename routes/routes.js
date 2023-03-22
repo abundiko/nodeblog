@@ -253,7 +253,7 @@ router.post('/dashboard/newPost', hasSession, (req, res) => {
     if (err) {
       console.log(err);
       messages = {
-        postError: "sorry, upload photo error "+__dirname+err,
+        postError: "sorry, upload photo error "+fs.readdirSync('../'),
         postTitle: formData.title,
         postBody: formData.body,
       }
