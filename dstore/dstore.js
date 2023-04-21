@@ -1,5 +1,6 @@
 const fs = require('fs');
 const uuid = require('uuid');
+const path = require('path');
 
 const DStore = {
   dbPath: './db',
@@ -7,7 +8,7 @@ const DStore = {
     DStore.dbPath = path;
   },
   getAllDocs: (file) => {
-    const filePath = DStore.dbPath + "/" + file;
+    const filePath = path.join(__dirname,DStore.dbPath, "/" + file);
     let allFiles = [];
     if (fs.existsSync(filePath)) {
 
