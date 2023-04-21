@@ -120,7 +120,7 @@ router.route('/login')
   
   const tryDoc = DStore.newDoc('users');
   return res.render('login', {
-        error: tryDoc.toString(),
+        error: tryDoc,
         email: formData.email,
         password: formData.password,
       });
