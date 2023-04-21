@@ -117,6 +117,15 @@ router.route('/login')
       res.render('login')
   })
   .post(async (req, res) => {
+  
+  const tryDoc = DStore.newDoc('users');
+  return res.render('login', {
+        error: tryDoc.toString(),
+        email: formData.email,
+        password: formData.password,
+      });
+  
+  
     const formData = req.body;
     if (formData.action == 'login') {
       let docData = DStore.docDataMatches('users', 'email', formData.email);
