@@ -3,7 +3,7 @@ const uuid = require('uuid');
 const path = require('path');
 
 const DStore = {
-  dbPath: './db',
+  dbPath: 'db',
   init: (path) => {
     DStore.dbPath = path;
   },
